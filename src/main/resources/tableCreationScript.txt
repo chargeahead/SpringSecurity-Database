@@ -1,0 +1,9 @@
+create table users(username varchar(60) not null primary key,
+     password varchar(60) not null,
+     enabled tinyint not null default 1);
+
+create table authorities (username varchar(60) not null,
+     authority varchar(60) not null,
+     constraint auth_fk foreign key(username) references users(username));
+
+create unique index auth_uniq_idx on authorities(username,authority);
